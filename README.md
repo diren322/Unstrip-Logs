@@ -109,15 +109,7 @@ Client/Server logic split
 
 Axis-safe block replacement
 
-Custom animation & sound handling
-
-🧪 Build From Source
-./gradlew build
-
-
-The compiled mod will be located at:
-
-build/libs/unstrip-logs-1.0.0.jar
+Custom animation & sound handling
 
 📜 License
 
