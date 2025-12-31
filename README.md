@@ -1,126 +1,73 @@
-Unstrip Logs Mod
+# Unstrip Logs Mod
 
-A Fabric QoL mod for Minecraft 1.21.11 that lets you revert stripped logs and wood back to their normal variants using an axe.
+Minecraft 1.21.11 için Fabric modu - Soyulmuş odunları normal oduna geri dönüştürün!
 
-✨ Features
+## Özellikler
 
-Right-click stripped logs or stripped wood with an axe to convert them back to normal logs
+- Elinde **balta** olan oyuncular, **stripped log** veya **stripped wood** bloklarına sağ tıklayarak onları normal odun haline geri döndürebilir
+- **Vanilla uyumlu**: 
+  - ✅ Client-side `PASS` döndürür → Bakır cilalama çalışır
+  - ✅ Server-side sadece stripped bloklar için `SUCCESS` döndürür
+  - ✅ Diğer tüm vanilla balta davranışları korunur
+- **Özel animasyon sistemi**:
+  - ⚡ **Anında el sallama** (client-side)
+  - 🔊 **İki aşamalı ses efekti** (server-side):
+    - İlk ses: Derin balta sesi (pitch 0.8F) - vurma hissi
+    - İkinci ses: Tiz ahşap sesi (pitch 1.2F) - kabuk geri gelme efekti
+  - ⏱️ **3 tick gecikme** (~150ms) - blok dönüşümü için doğal hissiyat
+- Blok dönüşürken **axis** (yön) korunur (X, Y veya Z)
+- Baltaya **1 durability hasarı** verilir
+- Shift tuşuna basmanız gerekmez
+- Vanilla'yı taklit etmez - **özel ve farklı bir işlem** hissi verir
 
-Fully vanilla-compatible behavior
+## Desteklenen Bloklar
 
-✅ Client-side returns PASS → copper waxing and other vanilla axe actions still work
+### Stripped Logs → Normal Logs
+- Oak, Spruce, Birch, Jungle, Acacia, Dark Oak
+- Mangrove, Cherry, Pale Oak
+- Crimson Stem, Warped Stem
 
-✅ Server-side returns SUCCESS only for stripped blocks
+### Stripped Wood → Normal Wood
+- Tüm ağaç türleri için wood varyantları
+- Crimson Hyphae, Warped Hyphae
 
-Custom animation system
+## Oyun İçi Deneyim
 
-Instant hand swing (client-side)
+1. **Oyuncu stripped log'a sağ tıklar**
+2. **Anında**: El sallanır + derin balta sesi duyulur
+3. **~150ms gecikme**: Görsel feedback süresi
+4. **3 tick sonra**: Blok değişir + tiz ahşap sesi duyulur
+5. **Baltanın durability'si**: 1 azalır
 
-Two-stage sound effects (server-side):
+Bu, "sihirli geri çevirme" hissi veren özel bir mekanizmadır!
 
-First sound: deep axe hit (low pitch) for impact
+## Kurulum
 
-Second sound: light wood sound (high pitch) for bark restoration
+1. [Fabric Loader](https://fabricmc.net/use/) yükleyin
+2. [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) yükleyin
+3. `unstrip-logs-1.0.0.jar` dosyasını `.minecraft/mods` klasörüne kopyalayın
 
-~150ms (3 ticks) delay for natural feedback
+## Teknik Detaylar
 
-Block axis (X / Y / Z) is preserved
+- **Minecraft Sürümü**: 1.21.11
+- **Fabric Loader**: 0.18.4+
+- **Fabric API**: 0.140.2+1.21.11
+- **Java**: 21
+- **API**: UseBlockCallback (Fabric API)
+- **Config**: JSON tabanlı (`config/unstrip-logs.json`)
+- **Animasyon**: Client/Server split
+- **Ses Efektleri**: 
+  - `SoundEvents.AXE_STRIP` (pitch 0.8F)
+  - `SoundEvents.WOOD_PLACE` (pitch 1.2F)
 
-Axe takes 1 durability damage
+## Build
 
-No sneak (Shift) required
-
-Designed to feel natural while still being a unique interaction
-
-🪵 Supported Blocks
-Stripped Logs → Normal Logs
-
-Oak, Spruce, Birch, Jungle, Acacia, Dark Oak
-
-Mangrove, Cherry, Pale Oak
-
-Crimson Stem, Warped Stem
-
-Stripped Wood → Normal Wood
-
-All wood variants
-
-Crimson Hyphae, Warped Hyphae
-
-🎮 In-Game Experience
-
-Player right-clicks a stripped log with an axe
-
-Immediately:
-
-Hand swing animation
-
-Deep axe sound
-
-~150ms delay for visual feedback
-
-After 3 ticks:
-
-Block converts back to normal
-
-Light wood sound plays
-
-Axe durability decreases by 1
-
-This creates a non-magical, tactile restoration feeling instead of an instant toggle.
-
-⚙️ Configuration
-
-The mod can be enabled or disabled via Mod Menu
-
-Config file:
-
-config/unstrip-logs.json
-
-
-Changes apply without restarting the game
-
-📦 Installation
-
-Install Fabric Loader
-
-Install Fabric API
-
-Download:
-
-unstrip-logs-1.0.0.jar
-
-
-Place it into:
-
-.minecraft/mods
-
-🛠 Technical Details
-
-Minecraft Version: 1.21.11
-
-Loader: Fabric
-
-Java: 21
-
-API: UseBlockCallback
-
-Client/Server logic split
-
-Axis-safe block replacement
-
-Custom animation & sound handling
-
-🧪 Build From Source
+```bash
 ./gradlew build
+```
 
+Build edilmiş mod dosyası `build/libs/unstrip-logs-1.0.0.jar` olarak oluşturulur.
 
-The compiled mod will be located at:
+## Lisans
 
-build/libs/unstrip-logs-1.0.0.jar
-
-📜 License
-
-© 2025 Diren. All Rights Reserved.
-
-This project and its source code may not be used, modified, or distributed without explicit permission from the author.
+© 2025 Diren. Tüm hakları saklıdır (All Rights Reserved).
